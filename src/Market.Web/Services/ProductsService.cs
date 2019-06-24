@@ -35,5 +35,15 @@ namespace Market.Web.Services
         };
 
         public IEnumerable<Product> Browse() => _products;
+
+        public void Create(Guid id, string name, string category, string description, decimal price)
+            => _products.Add(new Product
+            {
+                Id = id,
+                Name = name,
+                Category = category,
+                Description = description,
+                Price = price
+            });
     }
 }
