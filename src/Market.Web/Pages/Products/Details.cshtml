@@ -1,0 +1,35 @@
+@page "/products/{id:guid}"
+@model Market.Web.Pages.Products.Details
+
+@{
+    ViewData["Title"] = $"Product: {Model.Product.Name}";
+}
+<h3>@ViewData["Title"]</h3>
+<div class="row">
+    <div class="col-lg">
+        <table class="table table-hover">
+            <tbody>
+            <tr>
+                <td>Id</td>
+                <td>@Model.Product.Id</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>@Model.Product.Name</td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td>@Model.Product.Category</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>@Model.Product.Description</td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td>@Model.Product.Price $</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

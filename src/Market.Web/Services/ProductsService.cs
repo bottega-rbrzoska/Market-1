@@ -49,7 +49,7 @@ namespace Market.Web.Services
 
         public void Delete(Guid id)
         {
-            var product = _products.SingleOrDefault(p => p.Id == id);
+            var product = Get(id);
             if (product is null)
             {
                 return;
@@ -57,5 +57,8 @@ namespace Market.Web.Services
 
             _products.Remove(product);
         }
+
+        public Product Get(Guid id)
+            => _products.SingleOrDefault(p => p.Id == id);
     }
 }
