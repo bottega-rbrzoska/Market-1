@@ -1,4 +1,4 @@
-namespace Market.Web
+namespace Market.Infrastructure
 {
     public class AppOptions
     {
