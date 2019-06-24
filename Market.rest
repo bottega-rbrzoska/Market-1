@@ -1,0 +1,12 @@
+@url = http://localhost:5000
+
+###
+POST {{url}}/api/products
+Content-Type: application/json
+
+{
+    "name": "Product 1",
+    "category": "phones",
+    "description": "lorem ipsum",
+    "price": 100
+}
