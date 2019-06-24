@@ -30,9 +30,8 @@ namespace Market.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.Configure<AppOptions>(Configuration.GetSection("app"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
