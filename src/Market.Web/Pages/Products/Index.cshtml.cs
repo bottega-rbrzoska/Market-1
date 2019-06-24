@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Market.Web.Models;
 using Market.Web.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Market.Web.Pages.Products
@@ -19,6 +21,13 @@ namespace Market.Web.Pages.Products
         public void OnGet()
         {
             Products = _productsService.Browse();
+        }
+
+        public ActionResult OnPostDelete(Guid id)
+        {
+            _productsService.Delete(id);
+
+            return RedirectToAction(nameof(OnGet));
         }
     }
 }

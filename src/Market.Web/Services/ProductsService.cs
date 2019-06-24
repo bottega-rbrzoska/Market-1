@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Market.Web.Models;
 
 namespace Market.Web.Services
@@ -45,5 +46,16 @@ namespace Market.Web.Services
                 Description = description,
                 Price = price
             });
+
+        public void Delete(Guid id)
+        {
+            var product = _products.SingleOrDefault(p => p.Id == id);
+            if (product is null)
+            {
+                return;
+            }
+
+            _products.Remove(product);
+        }
     }
 }
