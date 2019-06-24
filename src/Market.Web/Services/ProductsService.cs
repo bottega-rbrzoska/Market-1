@@ -11,7 +11,7 @@ namespace Market.Web.Services
             new Product
             {
                 Id = Guid.NewGuid(),
-                Name = "Huawei Mate 20 Pro",
+                Name = "Huawei P30",
                 Category = "Phones",
                 Description = "Lorem ipsum...",
                 Price = 3500
