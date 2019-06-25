@@ -1,10 +1,6 @@
 using System;
 using Market.Application;
-using Market.Application.Products.Commands;
-using Market.Application.Products.Commands.Handlers;
 using Market.Application.Products.Services;
-using Market.Core.Repositories;
-using Market.Infrastructure.Caching.Repositories;
 using Market.Infrastructure.Dispatchers;
 using Market.Infrastructure.EF;
 using Microsoft.Extensions.Configuration;

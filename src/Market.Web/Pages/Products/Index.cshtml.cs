@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Market.Web.Models;
-using Market.Web.Services;
+using System.Threading.Tasks;
+using Market.Application;
+using Market.Application.Products.Commands;
+using Market.Application.Products.DTO;
+using Market.Application.Products.Queries;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -9,25 +12,25 @@ namespace Market.Web.Pages.Products
 {
     public class Index : PageModel
     {
-        private readonly IProductsService _productsService;
-        
-        public IEnumerable<Product> Products { get; private set; }
+        private readonly IDispatcher _dispatcher;
 
-        public Index(IProductsService productsService)
+        public IEnumerable<ProductDto> Products { get; private set; }
+
+        public Index(IDispatcher dispatcher)
         {
-            _productsService = productsService;
-        }
-        
-        public void OnGet()
-        {
-            Products = _productsService.Browse();
+            _dispatcher = dispatcher;
         }
 
-        public ActionResult OnPostDelete(Guid id)
+        public async Task OnGetAsync()
         {
-            _productsService.Delete(id);
+            Products = await _dispatcher.QueryAsync(new GetProducts());
+        }
 
-            return RedirectToAction(nameof(OnGet));
+        public async Task<ActionResult> OnPostDeleteAsync(Guid id)
+        {
+            await _dispatcher.SendAsync(new DeleteProduct(id));
+
+            return RedirectToAction("./Index");
         }
     }
 }

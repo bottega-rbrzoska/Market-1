@@ -18,6 +18,7 @@ namespace Market.Application.Products.Commands.Handlers
         {
             var product = new Product(command.Id, command.Name, command.Category, command.Description, command.Price);
             await _productRepository.AddAsync(product);
+            // eventDispatcher.PublishAsync(new ProductCreated(product))
         }
     }
 }
