@@ -7,6 +7,6 @@ namespace Market.Application.Products.Services
     public interface IProductService
     {
         Task<ProductDto> GetAsync(Guid id);
-        Task CreateAsync(ProductDto dto);
+        Task CreateAsync(ProductDetailsDto dto);
     }
 }

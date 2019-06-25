@@ -22,7 +22,7 @@ namespace Market.Application.Products.Services
             return product is null ? null : new ProductDto(product);
         }
 
-        public async Task CreateAsync(ProductDto dto)
+        public async Task CreateAsync(ProductDetailsDto dto)
         {
             var product = new Product(dto.Id, dto.Name, dto.Category, dto.Description, dto.Price);
             await _productRepository.AddAsync(product);

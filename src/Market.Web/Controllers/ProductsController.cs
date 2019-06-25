@@ -20,6 +20,18 @@ namespace Market.Web.Controllers
             _dispatcher = dispatcher;
         }
         
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ProductDetailsDto>> Get([FromRoute] GetProduct query)
+        {
+            var product = await _dispatcher.QueryAsync(query);
+            if (product is null)
+            {
+                return NotFound();
+            }
+
+            return product;
+        }
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductDto>>> Get([FromQuery] GetProducts query)
         {

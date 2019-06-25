@@ -8,7 +8,6 @@ namespace Market.Application.Products.DTO
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Category { get; set; }
-        public string Description { get; set; }
         public decimal Price { get; set; }
 
         public ProductDto()
@@ -20,7 +19,6 @@ namespace Market.Application.Products.DTO
             Id = product.Id;
             Name = product.Name;
             Category = product.Category;
-            Description = product.Description;
             Price = product.Price;
         }
     }
