@@ -9,18 +9,17 @@ namespace Market.Web.Controllers
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
-        private readonly ICommandHandler<CreateProduct> _handler;
+        private readonly IDispatcher _dispatcher;
 
-        public ProductsController(ICommandHandler<CreateProduct>
-            handler)
+        public ProductsController(IDispatcher dispatcher)
         {
-            _handler = handler;
+            _dispatcher = dispatcher;
         }
         
         [HttpPost]
         public async Task<ActionResult> Post(CreateProduct command)
         {
-            await _handler.HandleAsync(command);
+            await _dispatcher.SendAsync(command);
             
             return Created($"api/products/{command.Id}", null);
         }

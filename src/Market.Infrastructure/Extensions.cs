@@ -4,6 +4,7 @@ using Market.Application.Products.Commands.Handlers;
 using Market.Application.Products.Services;
 using Market.Core.Repositories;
 using Market.Infrastructure.Caching.Repositories;
+using Market.Infrastructure.Dispatchers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,6 +23,7 @@ namespace Market.Infrastructure
             services.AddSingleton<IProductRepository, InMemoryProductRepository>();
             services.Configure<AppOptions>(configuration.GetSection("app"));
             services.AddTransient<IProductService, ProductService>();
+            services.AddSingleton<IDispatcher, InMemoryDispatcher>();
 //            services.AddTransient<ICommandHandler<CreateProduct>, CreateProductHandler>();
 
             services.Scan(s => s.FromAssemblyOf<ICommand>()
