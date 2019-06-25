@@ -5,6 +5,7 @@ using Market.Application.Users.Services;
 using Market.Infrastructure.Auth;
 using Market.Infrastructure.Dispatchers;
 using Market.Infrastructure.EF;
+using Market.Infrastructure.Jobs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +26,7 @@ namespace Market.Infrastructure
             services.Configure<AppOptions>(configuration.GetSection("app"));
             services.AddTransient<IProductService, ProductService>();
             services.AddSingleton<IDispatcher, InMemoryDispatcher>();
+            services.AddHostedService<NotifyUsersJob>();
             services.AddJwt();
             services.AddAuthorization(a => a.AddPolicy("admin", p => p
                 .RequireAuthenticatedUser()

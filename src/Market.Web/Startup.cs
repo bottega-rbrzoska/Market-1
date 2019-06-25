@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Market.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +28,8 @@ namespace Market.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddFluentValidation(f => f.RegisterValidatorsFromAssemblyContaining<AppOptions>());
             services.AddInfrastructure();
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new Info
             {
