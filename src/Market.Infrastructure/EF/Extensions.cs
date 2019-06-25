@@ -16,6 +16,7 @@ namespace Market.Infrastructure.EF
             }
 
             services.AddTransient<IProductRepository, EfProductRepository>();
+            services.AddTransient<IUserRepository, EfUserRepository>();
             services.Configure<EfOptions>(configuration.GetSection("ef"));
             services.AddEntityFrameworkSqlServer()
                 .AddEntityFrameworkInMemoryDatabase()

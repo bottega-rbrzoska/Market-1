@@ -9,6 +9,7 @@ namespace Market.Infrastructure.EF
         private readonly IOptions<EfOptions> _options;
         
         public DbSet<Product> Products { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public MarketContext(IOptions<EfOptions> options)
         {
