@@ -51,6 +51,8 @@ namespace Market.Web
             }
 
 //            app.UseHttpsRedirection();
+
+            app.UseAuthentication();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSwagger();

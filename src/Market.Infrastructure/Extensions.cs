@@ -24,10 +24,11 @@ namespace Market.Infrastructure
 //            services.AddSingleton<IProductRepository, InMemoryProductRepository>();
             services.Configure<AppOptions>(configuration.GetSection("app"));
             services.AddTransient<IProductService, ProductService>();
-            services.AddSingleton<IPasswordHasher<IPasswordService>, PasswordHasher<IPasswordService>>();
             services.AddSingleton<IDispatcher, InMemoryDispatcher>();
-            services.AddTransient<IIdentityService, IdentityService>();
-            services.AddSingleton<IPasswordService, PasswordService>();
+            services.AddJwt();
+            services.AddAuthorization(a => a.AddPolicy("admin", p => p
+                .RequireAuthenticatedUser()
+                .RequireRole("admin")));
             services.AddEntityFramework();
             services.Scan(s => s.FromAssemblyOf<ICommand>()
                 .AddClasses(c => c.AssignableTo(typeof(ICommandHandler<>)))

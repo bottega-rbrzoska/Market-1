@@ -9,6 +9,6 @@ namespace Market.Application.Users.Services
     {
         Task<UserDto> GetAsync(Guid id);
         Task SignUpAsync(SignUp command);
-        Task<string> SignInAsync(SignIn command);
+        Task<JwtDto> SignInAsync(SignIn command);
     }
 }

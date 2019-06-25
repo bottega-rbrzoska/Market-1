@@ -5,6 +5,7 @@ using Market.Application;
 using Market.Application.Products.Commands;
 using Market.Application.Products.DTO;
 using Market.Application.Products.Queries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Market.Web.Controllers
@@ -19,7 +20,7 @@ namespace Market.Web.Controllers
         {
             _dispatcher = dispatcher;
         }
-        
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductDetailsDto>> Get([FromRoute] GetProduct query)
         {
@@ -31,7 +32,7 @@ namespace Market.Web.Controllers
 
             return product;
         }
-        
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductDto>>> Get([FromQuery] GetProducts query)
         {
@@ -47,8 +48,9 @@ namespace Market.Web.Controllers
 
             return Created($"api/products/{command.Id}", null);
         }
-        
+
         [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer", Policy = "admin")]
         public async Task<ActionResult> Delete(Guid id)
         {
             await _dispatcher.SendAsync(new DeleteProduct(id));

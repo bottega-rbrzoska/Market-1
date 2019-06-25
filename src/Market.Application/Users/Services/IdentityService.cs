@@ -11,11 +11,14 @@ namespace Market.Application.Users.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IPasswordService _passwordService;
+        private readonly IJwtProvider _jwtProvider;
 
-        public IdentityService(IUserRepository userRepository, IPasswordService passwordService)
+        public IdentityService(IUserRepository userRepository, IPasswordService passwordService,
+            IJwtProvider jwtProvider)
         {
             _userRepository = userRepository;
             _passwordService = passwordService;
+            _jwtProvider = jwtProvider;
         }
         
         public async Task<UserDto> GetAsync(Guid id)
@@ -39,9 +42,21 @@ namespace Market.Application.Users.Services
             await _userRepository.CreateAsync(user);
         }
 
-        public Task<string> SignInAsync(SignIn command)
+        public async Task<JwtDto> SignInAsync(SignIn command)
         {
-            throw new NotImplementedException();
+            var user = await _userRepository.GetAsync(command.Email);
+            if (user is null)
+            {
+                throw new Exception("Invalid credentials.");
+            }
+
+            var isPasswordValid = _passwordService.IsValid(user.Password, command.Password);
+            if (!isPasswordValid)
+            {
+                throw new Exception("Invalid credentials.");
+            }
+
+            return _jwtProvider.CreateToken(user.Id.ToString("N"), user.Role);
         }
     }
 }
