@@ -5,8 +5,11 @@ POST {{url}}/api/products
 Content-Type: application/json
 
 {
-    "name": "Product 1",
+    "name": "Product 2",
     "category": "phones",
     "description": "lorem ipsum",
-    "price": 100
+    "price": 250
 }
+
+###
+GET {{url}}/api/products?minPrice=150
