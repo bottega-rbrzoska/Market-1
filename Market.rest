@@ -13,3 +13,13 @@ Content-Type: application/json
 
 ###
 GET {{url}}/api/products?minPrice=150
+
+###
+POST {{url}}/api/sign-up
+Content-Type: application/json
+
+{
+    "email": "user1@market.com",
+    "password": "secret",
+    "role": "user"
+}

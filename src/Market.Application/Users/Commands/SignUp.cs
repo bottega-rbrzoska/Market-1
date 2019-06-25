@@ -11,7 +11,7 @@ namespace Market.Application.Users.Commands
 
         public SignUp(Guid id, string email, string password, string role)
         {
-            Id = id;
+            Id = id == Guid.Empty ? Guid.NewGuid() : id;
             Email = email;
             Password = password;
             Role = role;
