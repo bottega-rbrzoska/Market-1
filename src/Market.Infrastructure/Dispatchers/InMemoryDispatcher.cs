@@ -22,5 +22,15 @@ namespace Market.Infrastructure.Dispatchers
                 return handler.HandleAsync(command);
             }
         }
+
+        public Task<T> QueryAsync<T>(IQuery<T> query)
+        {
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var handlerType = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(T));
+                dynamic handler = scope.ServiceProvider.GetRequiredService(handlerType);
+                return handler.HandleAsync((dynamic) query);
+            }
+        }
     }
 }

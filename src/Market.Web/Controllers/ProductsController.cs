@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Market.Application;
 using Market.Application.Products.Commands;
+using Market.Application.Products.DTO;
+using Market.Application.Products.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Market.Web.Controllers
@@ -15,6 +18,14 @@ namespace Market.Web.Controllers
         public ProductsController(IDispatcher dispatcher)
         {
             _dispatcher = dispatcher;
+        }
+        
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ProductDto>>> Get([FromQuery] GetProducts query)
+        {
+            var products = await _dispatcher.QueryAsync(query);
+
+            return Ok(products);
         }
 
         [HttpPost]

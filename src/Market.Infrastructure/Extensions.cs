@@ -1,3 +1,4 @@
+using System;
 using Market.Application;
 using Market.Application.Products.Commands;
 using Market.Application.Products.Commands.Handlers;
@@ -20,17 +21,20 @@ namespace Market.Infrastructure
             {
                 configuration = serviceProvider.GetService<IConfiguration>();
             }
-            
+
 //            services.AddSingleton<IProductRepository, InMemoryProductRepository>();
             services.Configure<AppOptions>(configuration.GetSection("app"));
             services.AddTransient<IProductService, ProductService>();
             services.AddSingleton<IDispatcher, InMemoryDispatcher>();
+            services.AddEntityFramework();
             services.Scan(s => s.FromAssemblyOf<ICommand>()
                 .AddClasses(c => c.AssignableTo(typeof(ICommandHandler<>)))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
-            
-            services.AddEntityFramework();
+            services.Scan(s => s.FromAssemblies(AppDomain.CurrentDomain.GetAssemblies())
+                .AddClasses(c => c.AssignableTo(typeof(IQueryHandler<,>)))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime());
 
             return services;
         }
