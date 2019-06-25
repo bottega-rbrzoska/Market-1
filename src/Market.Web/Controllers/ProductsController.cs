@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Market.Application;
 using Market.Application.Products.Commands;
@@ -15,13 +16,21 @@ namespace Market.Web.Controllers
         {
             _dispatcher = dispatcher;
         }
-        
+
         [HttpPost]
         public async Task<ActionResult> Post(CreateProduct command)
         {
             await _dispatcher.SendAsync(command);
-            
+
             return Created($"api/products/{command.Id}", null);
+        }
+        
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            await _dispatcher.SendAsync(new DeleteProduct(id));
+
+            return NoContent();
         }
     }
 }
