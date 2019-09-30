@@ -1,5 +1,6 @@
 using FluentValidation.AspNetCore;
 using Market.Infrastructure;
+using Market.Web.Framework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -28,6 +29,7 @@ namespace Market.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddTransient<ErrorHandlerMiddleware>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation(f => f.RegisterValidatorsFromAssemblyContaining<AppOptions>());
             services.AddInfrastructure();
@@ -54,6 +56,7 @@ namespace Market.Web
 
 //            app.UseHttpsRedirection();
 
+            app.UseMiddleware<ErrorHandlerMiddleware>();
             app.UseAuthentication();
             app.UseStaticFiles();
             app.UseCookiePolicy();

@@ -5,6 +5,11 @@ namespace Market.Application.Products.Queries
 {
     public class GetProduct : IQuery<ProductDetailsDto>
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; }
+
+        public GetProduct(Guid id)
+        {
+            Id = id;
+        }
     }
 }

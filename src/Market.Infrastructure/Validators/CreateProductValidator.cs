@@ -3,7 +3,7 @@ using Market.Application.Products.Commands;
 
 namespace Market.Infrastructure.Validators
 {
-    public class CreateProductValidator : AbstractValidator<CreateProduct>
+    public class CreateProductValidator : AbstractValidator<AddProduct>
     {
         public CreateProductValidator()
         {

@@ -27,7 +27,7 @@ namespace Market.Infrastructure.Jobs
                 _logger.LogInformation("Notifying users...");
                 using (var scope = _serviceProvider.CreateScope())
                 {
-                    var productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository>();
+                    var productRepository = scope.ServiceProvider.GetRequiredService<IProductsRepository>();
                     // ...
                 }
 

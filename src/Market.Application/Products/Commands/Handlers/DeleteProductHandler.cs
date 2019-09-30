@@ -5,16 +5,16 @@ namespace Market.Application.Products.Commands.Handlers
 {
     public class DeleteProductHandler : ICommandHandler<DeleteProduct>
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IProductsRepository _productsRepository;
 
-        public DeleteProductHandler(IProductRepository productRepository)
+        public DeleteProductHandler(IProductsRepository productsRepository)
         {
-            _productRepository = productRepository;
+            _productsRepository = productsRepository;
         }
         
         public async Task HandleAsync(DeleteProduct command)
         {
-            await _productRepository.DeleteAsync(command.Id);
+            await _productsRepository.DeleteAsync(command.Id);
         }
     }
 }

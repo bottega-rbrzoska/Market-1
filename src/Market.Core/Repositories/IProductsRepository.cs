@@ -4,7 +4,7 @@ using Market.Core.Entities;
 
 namespace Market.Core.Repositories
 {
-    public interface IProductRepository
+    public interface IProductsRepository
     {
         Task<Product> GetAsync(Guid id);
         Task AddAsync(Product product);

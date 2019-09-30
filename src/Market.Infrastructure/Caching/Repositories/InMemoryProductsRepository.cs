@@ -7,7 +7,7 @@ using Market.Core.Repositories;
 
 namespace Market.Infrastructure.Caching.Repositories
 {
-    public class InMemoryProductRepository : IProductRepository
+    public class InMemoryProductsRepository : IProductsRepository
     {
         private readonly List<Product> _products = new List<Product>
         {

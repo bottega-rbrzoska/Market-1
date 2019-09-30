@@ -22,15 +22,15 @@ namespace Market.Web.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductDetailsDto>> Get([FromRoute] GetProduct query)
+        public async Task<ActionResult<ProductDetailsDto>> Get(Guid id)
         {
-            var product = await _dispatcher.QueryAsync(query);
+            var product = await _dispatcher.QueryAsync(new GetProduct(id));
             if (product is null)
             {
                 return NotFound();
             }
 
-            return product;
+            return Ok(product);
         }
 
         [HttpGet]
@@ -42,11 +42,11 @@ namespace Market.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(CreateProduct command)
+        public async Task<ActionResult> Post(AddProduct command)
         {
             await _dispatcher.SendAsync(command);
 
-            return Created($"api/products/{command.Id}", null);
+            return CreatedAtAction(nameof(Get), new  {id = command.Id}, null);
         }
 
         [HttpDelete("{id}")]

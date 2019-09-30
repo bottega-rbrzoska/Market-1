@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Market.Infrastructure.EF.Repositories
 {
-    public class EfProductRepository : IProductRepository
+    public class EfProductsRepository : IProductsRepository
     {
         private readonly MarketContext _context;
 
-        public EfProductRepository(MarketContext context)
+        public EfProductsRepository(MarketContext context)
         {
             _context = context;
         }

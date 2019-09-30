@@ -8,16 +8,16 @@ namespace Market.Application.Products.Services
 {
     public class ProductService : IProductService
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IProductsRepository _productsRepository;
 
-        public ProductService(IProductRepository productRepository)
+        public ProductService(IProductsRepository productsRepository)
         {
-            _productRepository = productRepository;
+            _productsRepository = productsRepository;
         }
 
         public async Task<ProductDto> GetAsync(Guid id)
         {
-            var product = await _productRepository.GetAsync(id);
+            var product = await _productsRepository.GetAsync(id);
 
             return product is null ? null : new ProductDto(product);
         }
@@ -25,7 +25,7 @@ namespace Market.Application.Products.Services
         public async Task CreateAsync(ProductDetailsDto dto)
         {
             var product = new Product(dto.Id, dto.Name, dto.Category, dto.Description, dto.Price);
-            await _productRepository.AddAsync(product);
+            await _productsRepository.AddAsync(product);
         }
     }
 }

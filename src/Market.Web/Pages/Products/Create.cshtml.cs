@@ -56,7 +56,7 @@ namespace Market.Web.Pages.Products
             }
 
             var id = Guid.NewGuid();
-            await _dispatcher.SendAsync(new CreateProduct(id, Name, Category, Description, Price));
+            await _dispatcher.SendAsync(new AddProduct(id, Name, Category, Description, Price));
 
             return RedirectToPage("./Index");
         }

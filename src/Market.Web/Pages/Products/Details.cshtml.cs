@@ -20,10 +20,7 @@ namespace Market.Web.Pages.Products
 
         public async Task<ActionResult> OnGetAsync(Guid id)
         {
-            Product = await _dispatcher.QueryAsync(new GetProduct
-            {
-                Id = id
-            });
+            Product = await _dispatcher.QueryAsync(new GetProduct(id));
             if (Product is null)
             {
                 return NotFound();
