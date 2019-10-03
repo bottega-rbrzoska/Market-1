@@ -3,33 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserListItemComponent } from './user-list-item/user-list-item.component';
-import { VatPipe } from './vat.pipe';
-import { TestComponent } from './test/test.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { TestService } from './test.service';
-import { TestDirective } from './test.directive';
-
+import { MainModule } from './main/main.module';
+import { SharedModule } from './shared/shared.module';
+import { UserModule } from './user/user.module';
+import { TestModule } from './test/test.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    UserListComponent,
-    UserListItemComponent,
-    VatPipe,
-    TestComponent,
-    NavigationComponent,
-    PageNotFoundComponent,
-    TestDirective
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MainModule,
+    SharedModule,
+    UserModule,
+    TestModule
   ],
-  providers: [TestService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

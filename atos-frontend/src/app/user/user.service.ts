@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HomeUser } from './models/home-user.interface';
+import { HomeUser } from '../models/home-user.interface';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
 
   private userList: HomeUser[] = [

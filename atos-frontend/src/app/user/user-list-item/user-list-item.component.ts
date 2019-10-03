@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HomeUser } from '../models/home-user.interface';
+import { HomeUser } from 'src/app/models/home-user.interface';
 
 @Component({
   selector: 'app-user-list-item',
