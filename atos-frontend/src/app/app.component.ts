@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HomeUser } from './models/home-user.interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,9 @@ export class AppComponent {
       address: { city: 'Wrocław', street: 'Opolska' }
     }
   ];
+
+  constructor() {
+  }
 
   nameClickHandler(count: number) {
     this.nameClickCounter = count;

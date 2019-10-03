@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeUser } from '../models/home-user.interface';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -7,19 +8,10 @@ import { HomeUser } from '../models/home-user.interface';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  userList: HomeUser[] = [
-    {
-      name: 'Alojzy',
-      age: 67,
-      address: { city: 'Opole', street: 'Wrocławska' }
-    },
-    {
-      name: 'Stefan',
-      age: 76,
-      address: { city: 'Wrocław', street: 'Opolska' }
-    }
-  ];
-  constructor() { }
+  userList: HomeUser[] = [];
+  constructor(private userService: UserService) {
+    this.userList = this.userService.getUsersList();
+   }
 
   ngOnInit() {
   }

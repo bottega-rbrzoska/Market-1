@@ -11,6 +11,7 @@ import { TestComponent } from './test/test.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TestService } from './test.service';
+import { TestDirective } from './test.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TestService } from './test.service';
     VatPipe,
     TestComponent,
     NavigationComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TestDirective
   ],
   imports: [
     BrowserModule,

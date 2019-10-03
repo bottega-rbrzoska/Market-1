@@ -9,9 +9,12 @@ import { HomeUser } from '../models/home-user.interface';
 export class UserListItemComponent implements OnInit {
 
   @Input() user: HomeUser;
-  constructor() { }
+  constructor() {
+    console.log('in constructor: ' + this.user);
+  }
 
   ngOnInit() {
+    console.log('in onInit: ' + this.user);
   }
 
 }
