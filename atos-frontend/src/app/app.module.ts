@@ -9,6 +9,7 @@ import { UserListItemComponent } from './user-list-item/user-list-item.component
 import { VatPipe } from './vat.pipe';
 import { TestComponent } from './test/test.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     UserListItemComponent,
     VatPipe,
     TestComponent,
-    NavigationComponent
+    NavigationComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
