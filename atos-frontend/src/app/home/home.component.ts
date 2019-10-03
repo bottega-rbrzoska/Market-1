@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input,
+   Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +8,17 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  private clickCount = 0;
+  @Input() homeName: string;
+  @Output() nameClick = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit() {
   }
 
   handleClick() {
-    alert(1);
+    this.clickCount++;
+    this.nameClick.emit(this.clickCount);
   }
 
 }

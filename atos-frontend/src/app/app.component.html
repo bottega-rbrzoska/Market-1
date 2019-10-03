@@ -1,2 +1,5 @@
 <div class="red-text">{{ title }}</div>
-<app-home></app-home>
+<div>Home clicks: {{nameClickCounter}}</div>
+<input #appInput (keyup)="handleKeyup()">
+<app-home [homeName]="appInput.value"
+(nameClick)="nameClickHandler($event)"></app-home>

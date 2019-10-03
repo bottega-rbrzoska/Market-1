@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'atos';
+  nameClickCounter = 0;
+
+
+  nameClickHandler(count: number) {
+    this.nameClickCounter = count;
+  }
+
+  handleKeyup() {}
 }
