@@ -10,6 +10,7 @@ import { VatPipe } from './vat.pipe';
 import { TestComponent } from './test/test.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TestService } from './test.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [TestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
