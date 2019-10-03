@@ -1,6 +1,7 @@
 <div class="red-text">{{ title }}</div>
-<div>Home clicks: {{nameClickCounter}}</div>
-<div><button (click)="showHome = !showHome">Toggle home</button></div>
+<div>Home clicks: {{ nameClickCounter | currency: 'EUR'}} {{nameClickCounter | vat }}</div>
+<div><button class="{{showHome ? 'test' : 'niematestu'}}" [ngClass]="{ active: showHome }"
+  (click)="showHome = !showHome">Toggle home</button></div>
 <input #appInput (keyup)="handleKeyup()">
 <app-home *ngIf="showHome; else akuku"
 [homeName]="appInput.value"

@@ -27,5 +27,9 @@ export class AppComponent {
     this.nameClickCounter = count;
   }
 
+  formatNumber(num: number) {
+    return num.toString() + ' + VAT';
+  }
+
   handleKeyup() {}
 }
