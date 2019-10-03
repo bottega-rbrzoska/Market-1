@@ -1,4 +1,4 @@
-<div class="red-text">{{ title }}</div>
+<!-- <div class="red-text">{{ title }}</div>
 <div>Home clicks: {{ nameClickCounter | currency: 'EUR'}} {{nameClickCounter | vat }}</div>
 <div><button class="{{showHome ? 'test' : 'niematestu'}}" [ngClass]="{ active: showHome }"
   (click)="showHome = !showHome">Toggle home</button></div>
@@ -15,3 +15,6 @@
 </ul>
 
 <app-user-list></app-user-list>
+ -->
+ <app-navigation></app-navigation>
+<router-outlet></router-outlet>

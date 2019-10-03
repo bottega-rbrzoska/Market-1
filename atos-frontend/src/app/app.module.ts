@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserListItemComponent } from './user-list-item/user-list-item.component';
 import { VatPipe } from './vat.pipe';
+import { TestComponent } from './test/test.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { VatPipe } from './vat.pipe';
     HomeComponent,
     UserListComponent,
     UserListItemComponent,
-    VatPipe
+    VatPipe,
+    TestComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
