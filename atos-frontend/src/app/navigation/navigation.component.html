@@ -1,6 +1,14 @@
 <nav class="navbar navbar-expand navbar-light bg-light">
     <div class="nav navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" routerLink="/test">Test</a>
+        <a class="nav-item nav-link"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/']">Home</a>
+        <a class="nav-item nav-link"
+        routerLinkActive="active"
+        routerLink="/test">Test</a>
+        <a class="nav-item nav-link"
+        routerLinkActive="active"
+        routerLink="/users">Users</a>
     </div>
 </nav>
