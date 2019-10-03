@@ -1,5 +1,14 @@
 <div class="red-text">{{ title }}</div>
 <div>Home clicks: {{nameClickCounter}}</div>
+<div><button (click)="showHome = !showHome">Toggle home</button></div>
 <input #appInput (keyup)="handleKeyup()">
-<app-home [homeName]="appInput.value"
+<app-home *ngIf="showHome; else akuku"
+[homeName]="appInput.value"
 (nameClick)="nameClickHandler($event)"></app-home>
+<ng-template #akuku>
+  <div>A ku ku (Loading .....)</div>
+</ng-template>
+
+<ul>
+  <li *ngFor="let user of userList">{{user.name}}</li>
+</ul>

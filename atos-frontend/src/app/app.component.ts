@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HomeUser } from './models/home-user.interface';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,19 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'atos';
   nameClickCounter = 0;
-
+  showHome = false;
+  userList: HomeUser[] = [
+    {
+      name: 'Alojzy',
+      age: 67,
+      address: { city: 'Opole', street: 'Wrocławska' }
+    },
+    {
+      name: 'Stefan',
+      age: 76,
+      address: { city: 'Wrocław', street: 'Opolska' }
+    }
+  ];
 
   nameClickHandler(count: number) {
     this.nameClickCounter = count;
