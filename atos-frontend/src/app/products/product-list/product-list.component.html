@@ -1,1 +1,9 @@
-<p>product-list works!</p>
+<ul class="list-group">
+  <li class="list-group-item"
+  *ngFor="let product of products">{{ product.name }}</li>
+</ul>
+----
+<ul class="list-group">
+  <li class="list-group-item"
+  *ngFor="let product of products$ | async">{{ product.name }}</li>
+</ul>
