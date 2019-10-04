@@ -1,4 +1,9 @@
+<div>
+  <a class="btn btn-danger" routerLink="/products/add">Add Product</a>
+</div>
 <ul class="list-group">
   <li class="list-group-item"
-  *ngFor="let product of products$ | async">{{ product.name }} [{{ product.category}}]</li>
+  *ngFor="let product of products$ | async">{{ product.name }} [{{ product.category}}]
+  <a class="btn btn-warning" [routerLink]="['/products', 'edit', product.id]">Edit</a></li>
+
 </ul>

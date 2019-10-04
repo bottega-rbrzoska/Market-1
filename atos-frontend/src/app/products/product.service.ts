@@ -19,4 +19,8 @@ export class ProductService {
     this.httpClient.get<Product[]>('http://localhost:5000/api/products')
     .subscribe(prods => this.productsSubj.next(prods));
   }
+
+  getProductById$(id: string) {
+    return this.httpClient.get<Product>('http://localhost:5000/api/products/' + id);
+  }
 }
