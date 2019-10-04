@@ -8,7 +8,7 @@ import { HomeComponent } from './main/home/home.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'test', component: TestComponent },
-  { path: 'users', component: UserListComponent },
+  { path: 'users',  loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
   { path: '**', component: PageNotFoundComponent }
 ];
 

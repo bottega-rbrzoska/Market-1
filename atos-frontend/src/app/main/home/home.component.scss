@@ -7,3 +7,16 @@
   height: 200px;
   border: 1px solid green;
 }
+
+.parent {
+  width: 200px;
+  height: 200px;
+  border: 1px solid blue;
+
+  p {
+    color: orange;
+  }
+  span {
+    color: red;
+  }
+}

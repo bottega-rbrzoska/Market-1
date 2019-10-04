@@ -4,6 +4,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { RouterModule } from '@angular/router';
     NavigationComponent,
     PageNotFoundComponent],
   imports: [
+    SharedModule,
     CommonModule,
     RouterModule
   ],
