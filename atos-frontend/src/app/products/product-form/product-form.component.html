@@ -1,1 +1,10 @@
-<p>product-form works!</p>
+<form [formGroup]="productsForm" (submit)="handleSave()">
+  <div>Name: <input formControlName="name"></div>
+  <div>Category: <input formControlName="category"></div>
+  <div>Price: <input type="number" formControlName="price"></div>
+  <div>Description: <textarea formControlName="description"></textarea></div>
+  <button class="btn btn-danger">Save</button>
+</form>
+{{productsForm.get('category').errors | json}}
+
+{{productsForm.get('price').errors | json}}
