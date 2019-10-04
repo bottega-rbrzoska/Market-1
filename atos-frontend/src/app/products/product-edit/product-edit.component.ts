@@ -22,7 +22,7 @@ export class ProductEditComponent implements OnInit {
     this.productService.addProduct(product).subscribe(() => {
       this.router.navigateByUrl('/products');
       this.productService.fetchProducts();
-    });
+    }, error => alert(JSON.stringify(error)));
   }
 
 }
