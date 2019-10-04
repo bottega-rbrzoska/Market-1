@@ -20,6 +20,13 @@ export class ProductService {
     .subscribe(prods => this.productsSubj.next(prods));
   }
 
+  fetchFilteredProducts(category: string) {
+    this.httpClient.get<Product[]>('http://localhost:5000/api/products', {
+      params: { category }
+    })
+    .subscribe(prods => this.productsSubj.next(prods));
+  }
+
   getProductById$(id: string) {
     return this.httpClient.get<Product>('http://localhost:5000/api/products/' + id);
   }
