@@ -14,6 +14,7 @@ namespace Market.Web
     public class Startup
     {
         public IConfiguration Configuration { get; }
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         public Startup(IConfiguration configuration)
         {
@@ -38,6 +39,14 @@ namespace Market.Web
                 Title = "Market API",
                 Version = "v1"
             }));
+            services.AddCors(options =>
+        {
+            options.AddPolicy(MyAllowSpecificOrigins,
+            builder =>
+            {
+                builder.WithOrigins("http://localhost");
+            });
+        });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +70,7 @@ namespace Market.Web
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSwagger();
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Market API"));
             app.UseMvc();
         }
