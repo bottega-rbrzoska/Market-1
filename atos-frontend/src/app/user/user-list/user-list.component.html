@@ -1,5 +1,6 @@
 <h1>User List</h1>
+<h3>Number of users: {{ (userList$ | async)?.length }}</h3>
 <div>
   <app-user-list-item [user]="user"
-  *ngFor="let user of userList"></app-user-list-item>
+  *ngFor="let user of userList$ | async"></app-user-list-item>
 </div>

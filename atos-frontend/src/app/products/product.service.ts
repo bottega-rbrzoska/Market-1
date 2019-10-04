@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.interface';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ProductService {
-  private products: Product[] = [
-    { id: '1', name: 'pomidor', description: 'opis pomidora', price: 1.99, category: 'warzywo'},
-    { id: '2', name: 'ogorek', description: 'costam o ogorku', price: 0.99, category: 'warzywo'}
-  ];
-  private productsSubj = new BehaviorSubject<Product[]>(this.products);
+  private productsSubj = new BehaviorSubject<Product[]>([]);
 
   products$ = this.productsSubj.asObservable();
-  constructor() { }
+  productsNumber$ = this.productsSubj.pipe(
+    map(prods => prods.length)
+    );
+
+  constructor(private httpClient: HttpClient) { }
+
+  fetchProducts() {
+    this.httpClient.get<Product[]>('http://localhost:5000/api/products')
+    .subscribe(prods => this.productsSubj.next(prods));
+  }
 }
