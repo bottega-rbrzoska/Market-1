@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
+import { Product } from 'src/app/models/product.interface';
 
 @Component({
   selector: 'app-product-form',
@@ -7,6 +8,9 @@ import { FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors, Abst
   styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent implements OnInit {
+
+  @Output() save = new EventEmitter();
+  @Input() product: Product;
 
   productsForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -19,6 +23,9 @@ export class ProductFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if (this.product) {
+      this.productsForm.patchValue(this.product);
+    }
     this.productsForm.valueChanges.subscribe(vals => console.log(vals))
   }
 
@@ -30,7 +37,7 @@ export class ProductFormComponent implements OnInit {
 
   handleSave() {
     if (this.productsForm.valid) {
-      console.log(this.productsForm.value)
+      this.save.emit(this.productsForm.value)
     }
   }
 

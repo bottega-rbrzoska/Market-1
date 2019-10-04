@@ -4,22 +4,23 @@ import { ProductFormComponent } from './product-form.component';
 
 describe('ProductFormComponent', () => {
   let component: ProductFormComponent;
-  let fixture: ComponentFixture<ProductFormComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ProductFormComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductFormComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new ProductFormComponent();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+
+  it('should set form as invalid for empty name', () => {
+    component.productsForm.setValue({
+      name: null,
+      price: 10,
+      description: 'test',
+      category: 'test'
+    });
+    expect(component.productsForm.invalid).toBe(true);
   });
 });

@@ -1,3 +1,4 @@
-<pre>
-  {{ product | json}}
-</pre>
+<app-product-form
+*ngIf="product"
+[product] = "product"
+(save)="handleSaveForm($event)"></app-product-form>

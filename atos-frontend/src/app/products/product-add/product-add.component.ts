@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-add',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductAddComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit() {
   }
 
+  handleSaveForm(product) {
+    this.productService.addProduct(product).subscribe(() => {
+      this.router.navigateByUrl('/products');
+      this.productService.fetchProducts();
+    });
+  }
 }
