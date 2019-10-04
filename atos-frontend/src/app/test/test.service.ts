@@ -6,7 +6,7 @@ export class TestService {
   private _counter = 0;
 
   constructor() {
-    console.log('constructor')
+    console.log('constructor');
    }
 
    getCount() {

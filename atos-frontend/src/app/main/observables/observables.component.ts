@@ -19,14 +19,14 @@ export class ObservablesComponent implements OnInit {
 
   subject = new Subject<string>();
   bSubject = new BehaviorSubject('x');
-  ofObs = of(1,2,3,4);
+  ofObs = of(1, 2, 3, 4);
   constructor() { }
 
   ngOnInit() {
     this.bSubject.next('xx');
-    console.log(this.bSubject.value)
+    console.log(this.bSubject.value);
     this.bSubject.subscribe(console.log);
-    this.ofObs.subscribe(console.log)
+    this.ofObs.subscribe(console.log);
     this.obs.subscribe(
       (nextVal) =>  console.log(nextVal),
       (error) => console.error(error),

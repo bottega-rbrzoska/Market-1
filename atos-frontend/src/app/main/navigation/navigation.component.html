@@ -21,4 +21,8 @@
         routerLinkActive="active"
         routerLink="/observables">Observables</a>
     </div>
+    <div>
+      <button class="btn btn-primary" (click)="login()" *ngIf="!(token$ | async)">Login</button>
+      <button class="btn btn-primary" (click)="logout()"  *ngIf="token$ | async">Logout</button>
+    </div>
 </nav>

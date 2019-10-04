@@ -34,4 +34,8 @@ export class ProductService {
   addProduct(prod) {
     return this.httpClient.post('http://localhost:5000/api/products', prod);
   }
+
+  deleteProduct(id) {
+    return this.httpClient.delete('http://localhost:5000/api/products/' + id);
+  }
 }

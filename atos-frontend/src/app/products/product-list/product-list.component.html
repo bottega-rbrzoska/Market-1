@@ -5,6 +5,8 @@
 <ul class="list-group">
   <li class="list-group-item"
   *ngFor="let product of products$ | async">{{ product.name }} [{{ product.category}}]
-  <a class="btn btn-warning" [routerLink]="['/products', 'edit', product.id]">Edit</a></li>
+
+  <a class="btn btn-warning" [routerLink]="['/products', 'edit', product.id]">Edit</a>
+<button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button></li>
 
 </ul>

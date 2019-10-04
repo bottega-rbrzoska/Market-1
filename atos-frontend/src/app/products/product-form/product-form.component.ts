@@ -26,7 +26,7 @@ export class ProductFormComponent implements OnInit {
     if (this.product) {
       this.productsForm.patchValue(this.product);
     }
-    this.productsForm.valueChanges.subscribe(vals => console.log(vals))
+    this.productsForm.valueChanges.subscribe(vals => console.log(vals));
   }
 
   private assValidator(control: AbstractControl): ValidationErrors | null {
@@ -37,7 +37,7 @@ export class ProductFormComponent implements OnInit {
 
   handleSave() {
     if (this.productsForm.valid) {
-      this.save.emit(this.productsForm.value)
+      this.save.emit(this.productsForm.value);
     }
   }
 

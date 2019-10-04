@@ -12,7 +12,7 @@ export class ProductEditComponent implements OnInit {
 
   product: Product;
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private router: Router) {
-    productService.getProductById$(activatedRoute.snapshot.params.id).subscribe(prod => this.product = prod)
+    productService.getProductById$(activatedRoute.snapshot.params.id).subscribe(prod => this.product = prod);
    }
 
   ngOnInit() {

@@ -29,4 +29,10 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  deleteProduct(id) {
+    this.productService.deleteProduct(id).subscribe(
+      () => this.productService.fetchProducts(),
+      error => alert(JSON.stringify(error)));
+  }
+
 }

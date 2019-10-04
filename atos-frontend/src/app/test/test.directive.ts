@@ -24,7 +24,7 @@ export class TestDirective {
   }
 
   ngOnChanges(changes) {
-    console.log(changes)
+    console.log(changes);
   }
 
 }
