@@ -7,6 +7,7 @@ import { ProductListItemComponent } from './product-list-item/product-list-item.
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductFormComponent } from './product-form/product-form.component';
+import { ProductService } from './product.service';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
   imports: [
     CommonModule,
     ProductsRoutingModule
-  ]
+  ],
+  providers: [ProductService]
 })
 export class ProductsModule { }
