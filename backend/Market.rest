@@ -6,14 +6,14 @@ POST {{url}}/api/products
 Content-Type: application/json
 
 {
-    "name": "Product 2",
-    "category": "phones",
-    "description": "lorem ipsum",
-    "price": 250
+    "name": "Product 5",
+    "category": "tablets",
+    "description": "dssdfsdf",
+    "price": 59.99
 }
 
 ###
-GET {{url}}/api/products?minPrice=150
+GET {{url}}/api/products?minPrice=5
 
 ###
 DELETE {{url}}/api/products/8239144a-d75d-4225-82ab-67e1398a0d71

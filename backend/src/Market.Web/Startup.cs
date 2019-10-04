@@ -44,7 +44,7 @@ namespace Market.Web
             options.AddPolicy(MyAllowSpecificOrigins,
             builder =>
             {
-                builder.WithOrigins("http://localhost");
+                builder.WithOrigins("http://localhost:4200");
             });
         });
         }
